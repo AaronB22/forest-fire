@@ -57,12 +57,15 @@ public class Fire {
         Queue<Location> queue = new LinkedList<>();
         queue.add(new Location(matchR,matchC,0));
 
+        int maxTime = 0;
+
         while(!queue.isEmpty()){
             Location current = queue.remove();
             if(burnt.contains(current))continue;
-
             burnt.add(current);
 
+            maxTime = Math.max(maxTime,current.time());
+                                                                                     // Broken here\/
             List<Location> neighbors = findNextTree(forest, current.row(),current.col(), current.time());
             for(Location neighbor : neighbors){
                 queue.add(neighbor);
@@ -71,7 +74,7 @@ public class Fire {
 
 
         // Implement this AND add more tests!!!
-        return -1;
+        return maxTime;
     }
 
     public static List<Location> findNextTree(char[][] forest, int matchR, int matchC, int time){
