@@ -74,23 +74,6 @@ public class Fire {
         return -1;
     }
 
-<<<<<<< HEAD
-    public List<Location> findNextTree(char[][] forest, int matchR, int matchC) {
-        int[][] moves = new int[][] {
-                { -1, 0 },
-                { 1, 0 },
-                { 0, -1 },
-                { 0, 1 }
-        };
-        List<Location> treeNeighbours = new ArrayList<>();
-        for (int[] move : moves) {
-            Location possibleTree = new Location(matchR + move[0], matchC + move[1]);
-            if (possibleTree.row() >= 0 && possibleTree.row() < forest.length &&
-                    possibleTree.col() >= 0 && possibleTree.col() < forest[0].length &&
-                    forest[possibleTree.row()][possibleTree.col()] != '.') {
-                treeNeighbours.add(possibleTree);
-            }
-=======
     public static List<Location> findNextTree(char[][] forest, int matchR, int matchC){
         int[][] moves=new int[][]{
             {-1,0},
@@ -106,7 +89,6 @@ public class Fire {
                 forest[possibleTree.row()][possibleTree.col()] !='.'){
                     treeNeighbors.add(possibleTree);
                 }
->>>>>>> d46be4835a66349d8779192845d8fd1da347aa0a
         }
         return treeNeighbors;
     }
