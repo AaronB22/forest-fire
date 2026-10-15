@@ -63,7 +63,7 @@ public class Fire {
 
             burnt.add(current);
 
-            List<Location> neighbors = findNextTree(forest, current.row(),current.col());
+            List<Location> neighbors = findNextTree(forest, current.row(),current.col(), current.time());
             for(Location neighbor : neighbors){
                 queue.add(neighbor);
             }
