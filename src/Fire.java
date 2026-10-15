@@ -55,18 +55,16 @@ public class Fire {
 
         Set<Location> burnt = new HashSet<>();
         Queue<Location> queue = new LinkedList<>();
-        queue.add(new Location(matchR,matchC,0));
+        queue.add(new Location(matchR,matchC));
 
-        int maxTime = 0;
+        int depth = 0;
 
         while(!queue.isEmpty()){
             Location current = queue.remove();
             if(burnt.contains(current))continue;
             burnt.add(current);
 
-            maxTime = Math.max(maxTime,current.time());
-                                                                                     // Broken here\/
-            List<Location> neighbors = findNextTree(forest, current.row(),current.col(), current.time());
+            List<Location> neighbors = findNextTree(forest, current.row(),current.col());
             for(Location neighbor : neighbors){
                 queue.add(neighbor);
             }
@@ -74,10 +72,10 @@ public class Fire {
 
 
         // Implement this AND add more tests!!!
-        return maxTime;
+        return depth;
     }
 
-    public static List<Location> findNextTree(char[][] forest, int matchR, int matchC, int time){
+    public static List<Location> findNextTree(char[][] forest, int matchR, int matchC){
         int[][] moves=new int[][]{
             {-1,0},
             {1,0},
@@ -86,7 +84,7 @@ public class Fire {
         };
         List<Location> treeNeighbors= new ArrayList<>();
         for(int[] move: moves){
-            Location possibleTree= new Location(matchR+move[0], matchC+move[1], time+1);
+            Location possibleTree= new Location(matchR+move[0], matchC+move[1]);
                         if(possibleTree.row()>=0&& possibleTree.row()< forest.length &&
                 possibleTree.col()>=0 && possibleTree.col()< forest[0].length &&
                 forest[possibleTree.row()][possibleTree.col()] !='.'){
