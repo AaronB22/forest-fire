@@ -83,7 +83,7 @@ public class Fire {
         };
         List<Location> treeNeighbors= new ArrayList<>();
         for(int[] move: moves){
-            Location possibleTree= new Location(matchR+move[0], matchC+move[1]);
+            Location possibleTree= new Location(matchR+move[0], matchC+move[1], time+1);
                         if(possibleTree.row()>=0&& possibleTree.row()< forest.length &&
                 possibleTree.col()>=0 && possibleTree.col()< forest[0].length &&
                 forest[possibleTree.row()][possibleTree.col()] !='.'){
