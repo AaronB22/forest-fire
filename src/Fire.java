@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class Fire {
     /**
@@ -49,10 +53,28 @@ public class Fire {
         // HINT: when adding to your BFS queue, you can include more information than
         // just a location. What other information might be useful?
 
+        Set<Location> burnt = new HashSet<>();
+        Queue<Location> queue = new LinkedList<>();
+        queue.add(new Location(matchR,matchC));
+
+        while(!queue.isEmpty()){
+            Location current = queue.remove();
+            if(burnt.contains(current))continue;
+
+            burnt.add(current);
+
+            List<Location> neighbors = findNextTree(forest, current.row(),current.col());
+            for(Location neighbor : neighbors){
+                queue.add(neighbor);
+            }
+        }
+
+
         // Implement this AND add more tests!!!
         return -1;
     }
 
+<<<<<<< HEAD
     public List<Location> findNextTree(char[][] forest, int matchR, int matchC) {
         int[][] moves = new int[][] {
                 { -1, 0 },
@@ -68,7 +90,24 @@ public class Fire {
                     forest[possibleTree.row()][possibleTree.col()] != '.') {
                 treeNeighbours.add(possibleTree);
             }
+=======
+    public static List<Location> findNextTree(char[][] forest, int matchR, int matchC){
+        int[][] moves=new int[][]{
+            {-1,0},
+            {1,0},
+            {0,-1},
+            {0,1}
+        };
+        List<Location> treeNeighbors= new ArrayList<>();
+        for(int[] move: moves){
+            Location possibleTree= new Location(matchR+move[0], matchC+move[1]);
+                        if(possibleTree.row()>=0&& possibleTree.row()< forest.length &&
+                possibleTree.col()>=0 && possibleTree.col()< forest[0].length &&
+                forest[possibleTree.row()][possibleTree.col()] !='.'){
+                    treeNeighbors.add(possibleTree);
+                }
+>>>>>>> d46be4835a66349d8779192845d8fd1da347aa0a
         }
-        return treeNeighbours;
+        return treeNeighbors;
     }
 }
