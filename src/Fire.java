@@ -55,7 +55,7 @@ public class Fire {
 
         Set<Location> burnt = new HashSet<>();
         Queue<Location> queue = new LinkedList<>();
-        queue.add(new Location(matchR,matchC));
+        queue.add(new Location(matchR,matchC,0));
 
         while(!queue.isEmpty()){
             Location current = queue.remove();
