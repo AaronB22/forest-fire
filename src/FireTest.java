@@ -33,7 +33,7 @@ public class FireTest {
                 { 't', 't', 't', 't', '.', '.', '.', '.', '.' }
         };
         List<Location> treeNeighbors = new ArrayList<>();
-        Location treeStart = new Location(3,0);
+        Location treeStart = new Location(3,0,0);
 
         treeNeighbors.add(treeStart);
   

@@ -74,7 +74,7 @@ public class Fire {
         return -1;
     }
 
-    public static List<Location> findNextTree(char[][] forest, int matchR, int matchC){
+    public static List<Location> findNextTree(char[][] forest, int matchR, int matchC, int time){
         int[][] moves=new int[][]{
             {-1,0},
             {1,0},
