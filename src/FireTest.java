@@ -33,11 +33,11 @@ public class FireTest {
                 { 't', 't', 't', 't', '.', '.', '.', '.', '.' }
         };
         List<Location> treeNeighbors = new ArrayList<>();
-        Location treeStart = new Location(3,0,0);
+        Location treeStart = new Location(3,0,1);
 
         treeNeighbors.add(treeStart);
   
-        List<Location> actual = Fire.findNextTree(forest,4,0);
+        List<Location> actual = Fire.findNextTree(forest,4,0,0);
         assertEquals(treeNeighbors,actual);
         
     }
