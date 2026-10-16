@@ -24,6 +24,25 @@ public class FireTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testTimeToBurn25() {
+        char[][] forest = {
+            {'t','t','t','t','t'},
+            {'t','t','t','t','t'},
+            {'t','t','t','t','t'},
+            {'t','t','t','t','t'},
+            {'t','t','t','t','t'}
+        };
+
+        int matchR = 2;
+        int matchC = 2;
+
+        int expected = 4;
+        int actual = Fire.timeToBurn(forest, matchR, matchC);
+
+        assertEquals(expected, actual);
+    }
+
     @Test 
     public void  testFindNextTree(){
         char[][] forest = {
