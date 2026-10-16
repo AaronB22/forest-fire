@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,23 @@ public class FireTest {
         int actual = Fire.timeToBurn(forest, matchR, matchC);
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testTimeToBurnExample_FireWithoutTree() {
+        char[][] forest = {
+            {'t','.','.','t','t','t','t','.','t'},
+            {'.','.','t','t','.','.','.','.','t'},
+            {'.','.','t','t','t','t','t','t','t'},
+            {'t','t','t','t','.','.','.','.','.'}
+        };
+
+        int matchR = 1;
+        int matchC = 1;
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            Fire.timeToBurn(forest, matchR, matchC);
+        });
     }
 
     @Test

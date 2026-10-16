@@ -54,6 +54,7 @@ public class Fire {
     public static int timeToBurn(char[][] forest, int matchR, int matchC) {
         // HINT: when adding to your BFS queue, you can include more information than
         // just a location. What other information might be useful?
+        if(forest[matchR][matchC] == '.') throw new IllegalArgumentException("No Tree to Burn here");
 
         Map<Location,Integer> burnt = new HashMap<>();
         Queue<Location> queue = new LinkedList<>();
