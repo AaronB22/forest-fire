@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Queue;
@@ -53,25 +55,33 @@ public class Fire {
         // HINT: when adding to your BFS queue, you can include more information than
         // just a location. What other information might be useful?
 
-        Set<Location> burnt = new HashSet<>();
+        Map<Location,Integer> burnt = new HashMap<>();
         Queue<Location> queue = new LinkedList<>();
         queue.add(new Location(matchR,matchC));
 
-        int depth = 0;
-
         while(!queue.isEmpty()){
             Location current = queue.remove();
-            if(burnt.contains(current))continue;
-            burnt.add(current);
+            if(burnt.containsKey(current))continue;
+            burnt.put(current,0);
 
             List<Location> neighbors = findNextTree(forest, current.row(),current.col());
+
+            int lastDepth = -1;
             for(Location neighbor : neighbors){
+                if(burnt.containsKey(neighbor)){
+                    lastDepth = (lastDepth > 0) ? Math.min(lastDepth, burnt.get(neighbor)) : burnt.get(neighbor);
+                }
                 queue.add(neighbor);
             }
+            burnt.put(current,lastDepth+1);
         }
 
 
         // Implement this AND add more tests!!!
+        int depth = 0;
+        for(int value : burnt.values()){
+            depth = Math.max(depth,value);
+        }
         return depth;
     }
 
